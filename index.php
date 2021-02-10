@@ -1,13 +1,13 @@
 <?php
     require 'database.php';
+    require 'article.php';
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8"/>
     </head>
-    <body>
-        
+    <body>   
         <header>
             <h1>Jean Forteroche</h1>
             <nav>
@@ -17,11 +17,23 @@
             </nav>
         </header>
         <section>
-            <div class="article"> <!-- dernier article --> 
+             <?php 
+                $article = new Article();
+                $reponse = $article->getArticle();
+                while ($article = $reponse->fetch()) 
+                {
+            ?>
+            <div class="article">  <?php echo $article['titre']; ?> <!-- dernier article --> 
                 <div class="label"> <!-- encart label -->
                     <h2 class="titreArtile"></h2>
                     <div class="articleDate"> </div>
                 </div>
+             <?php
+              }
+
+                $reponse->closeCursor(); // Termine le traitement de la requête
+
+            ?>
                 <div class="preview">
                     <!-- premières lignes de l'article -->
                     <a class="lireLaSuite" href="#">Lire la suite</a>
