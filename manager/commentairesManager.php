@@ -2,15 +2,19 @@
 
 class CommentaireManager {
 
+    
     private $_db;
 
-    public function __construct($db){
+    public function __construct(){ //($db)
         $bdd = new Database;
-        $bdd->getConnection($db);
+        $this->_db = $bdd->getConnection();
     }
 
     public function add (Commentaire $commentaire){
-        $q = $this->_db->prepare('INSERT INTO commentaires(id, auteur_id, commentaire, article_id, date)');
+        $bdd = new Database;
+        $co = $bdd->getConnection();
+
+        $q = $this->$co->prepare('INSERT INTO commentaires(id, auteur_id, commentaire, article_id, date) VALUE(:id, :auteur_id, :commentaire, :article_id, :date)');
         $q->bindValue(':id', $commentaire->ID(), PDO::PARAM_INT);
         $q->bindValue(':auteur_id', $commentaire->auteur_id(), PDO::PARAM_STR);
         $q->bindValue(':commentaire', $commentaire->commentaire(), PDO::PARAM_STR);
@@ -19,7 +23,7 @@ class CommentaireManager {
 
         $q->execute();
     }
-
+    
     public function delete(Commentaire $commentaire){
         $this->_db->exec('DELETE FROM commentaires WHERE id = ' .$commentaire->id())
     }
