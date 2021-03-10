@@ -2,18 +2,18 @@
 
 class ArticleManager {
 
-    private $_db;
+       private $_db;
 
-    public function __construct($connection){
-        $_db = $connection;
-//        $bdd = new Database;        
-//        $test = $bdd->getConnection();
+    public function __construct(){
+        $bdd = new Database;
+        $this->_db = $bdd->getConnection();
     }
 
     public function add (Article $article){
-        var_dump($this);
+        $bdd = new Database;
+        $co = $bdd->getConnection();
 
-        $q = $this->_db->prepare('INSERT INTO articles(ID, titre, contenu, auteur, date)');
+        $q = $this->$co->prepare('INSERT INTO articles(ID, titre, contenu, auteur, date) VALUE(:ID, :titre, :contenu, :auteur, :date)');
         $q->bindValue(':ID', $article->ID(), PDO::PARAM_INT);
         $q->bindValue(':titre', $article->titre(), PDO::PARAM_STR);
         $q->bindValue(':contenu', $article->contenu(), PDO::PARAM_STR);
