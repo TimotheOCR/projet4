@@ -11,11 +11,8 @@ class CommentaireManager {
     }
 
     public function add (Commentaire $commentaire){
-        $bdd = new Database;
-        $co = $bdd->getConnection();
 
-        $q = $this->$co->prepare('INSERT INTO commentaires(id, auteur_id, commentaire, article_id, date) VALUE(:id, :auteur_id, :commentaire, :article_id, :date)');
-        $q->bindValue(':id', $commentaire->ID(), PDO::PARAM_INT);
+        $q = $this->_db->prepare('INSERT INTO commentaires(id, auteur_id, commentaire, article_id, date) VALUE(0, :auteur_id, :commentaire, :article_id, :date)');
         $q->bindValue(':auteur_id', $commentaire->auteur_id(), PDO::PARAM_STR);
         $q->bindValue(':commentaire', $commentaire->commentaire(), PDO::PARAM_STR);
         $q->bindValue(':article_id', $commentaire->article_id(), PDO::PARAM_STR);
