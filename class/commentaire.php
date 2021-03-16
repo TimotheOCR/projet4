@@ -1,5 +1,5 @@
 <?php 
-    class Commentaire {
+    class Commentaire extends Hydrate{
         private $_id;
         private $_auteurId;
         private $_commentaire;
@@ -20,36 +20,36 @@
         public function getId(){
             return $this->id;
         }
-        public function setId(){
-            $this->id = $id;
+        public function setId($id){
+            $this->_id = $id;
         }
 
         public function getAuteurId(){
             return $this->auteurId;
         }
-        public function setAuteurId(){
-            $this->auteurId = $auteurId;
+        public function setAuteurId($auteurId){
+            $this->_auteurId = $auteurId;
         }
 
         public function getCommentaire(){
             return $this->commentaire;
         }
-        public function setCommentaire(){
-            $this->commentaire = $commentaire;
+        public function setCommentaire($commentaire){
+            $this->_commentaire = $commentaire;
         }
 
         public function getArticleId(){
             return $this->articleId;
         }
-        public function setArticleId(){
-            $this->articleId = $articleId;
+        public function setArticleId($articleId){
+            $this->_articleId = $articleId;
         }
 
         public function getDate(){
             return $this->date;
         }
-        public function setDate(){
-            $this->date = $date;
+        public function setDate($date){
+            $this->_date = $date;
         }    
     }
 
