@@ -11,16 +11,12 @@ class UtilisateurManager {
     }
 
     public function add (Utilisateur $utilisateur){
-        $bdd = new Database;
-        $co = $bdd->getConnection();
         
-        $q = $this->$co->prepare('INSERT INTO utilisateur(ID, pseudo, email, password, commentaires) VALUE(:ID, :pseudo, :email, :password, :commentaires)');
-        $q->bindValue(':ID', $utilisateur->ID(), PDO::PARAM_INT);
+        $q = $this->_db->prepare('INSERT INTO utilisateur(ID, pseudo, email, password, commentaires) VALUE(0, :pseudo, :email, :password, :commentaires)');
         $q->bindValue(':pseudo', $utilisateur->pseudo(), PDO::PARAM_STR);
         $q->bindValue(':email', $utilisateur->email(), PDO::PARAM_STR);
         $q->bindValue(':password', $utilisateur->password(), PDO::PARAM_STR);
         $q->bindValue(':commentaires', $utilisateur->commentaires(), PDO::PARAM_STR);
-        
 
         $q->execute();
     }
