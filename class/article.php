@@ -1,5 +1,4 @@
 <?php 
-require 'class/hydrate.php';
     class Article extends Hydrate {
         private $_id;
         private $_titre;
@@ -17,38 +16,36 @@ require 'class/hydrate.php';
         public function getId(){
             return $this->id;
         }
-        public function setId(){
-            $this->id = $id;
+        public function setId($id){
+            $this->_id = $id;
         }
 
         public function getTitre(){
             return $this->titre;
         }
-        public function setTitre(){
-            $this->titre = $titre;
+        public function setTitre($titre){
+            $this->_titre = $titre;
         }
 
         public function getContenu(){
             return $this->contenu;
         }
-        public function setContenu(){
-            $this->contenu = $contenu;
+        public function setContenu($contenu){
+            $this->_contenu = $contenu;
         }
 
         public function getAuteur(){
             return $this->auteur;
         }
-        public function setAuteur(){
-            $this->auteur = $auteur;
+        public function setAuteur($auteur){
+            $this->_auteur = $auteur;
         }
 
         public function getDate(){
             return $this->date;
         }
-        public function setDate(){
-            $this->date = $date;
+        public function setDate($date){
+            $this->_date = $date;
         }    
     }
-
-
 ?>
