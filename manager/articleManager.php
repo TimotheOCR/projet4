@@ -10,11 +10,8 @@ class ArticleManager {
     }
 
     public function add (Article $article){
-        $bdd = new Database;
-        $co = $bdd->getConnection();
-
-        $q = $this->$co->prepare('INSERT INTO articles(ID, titre, contenu, auteur, date) VALUE(:ID, :titre, :contenu, :auteur, :date)');
-        $q->bindValue(':ID', $article->ID(), PDO::PARAM_INT);
+           
+        $q = $this->_db->prepare('INSERT INTO articles(ID, titre, contenu, auteur, date) VALUE(0, :titre, :contenu, :auteur, :date)');
         $q->bindValue(':titre', $article->titre(), PDO::PARAM_STR);
         $q->bindValue(':contenu', $article->contenu(), PDO::PARAM_STR);
         $q->bindValue(':auteur', $article->auteur(), PDO::PARAM_STR);
