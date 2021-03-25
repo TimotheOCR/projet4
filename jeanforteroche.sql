@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 10 fév. 2021 à 10:56
+-- Généré le :  jeu. 25 mars 2021 à 11:54
 -- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Version de PHP :  7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `contenu` text NOT NULL,
-  `auteur` varchar(100) NOT NULL,
+  `auteur_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
 -- Déchargement des données de la table `articles`
 --
 
-INSERT INTO `articles` (`ID`, `titre`, `contenu`, `auteur`, `date`) VALUES
-(1, 'premier article', 'Est es este ', 'Jean', '2021-02-10 11:27:46');
+INSERT INTO `articles` (`ID`, `titre`, `contenu`, `auteur_id`, `date`) VALUES
+(1, 'premier article', 'Est es este ', 0, '2021-02-10 11:27:46');
 
 -- --------------------------------------------------------
 
@@ -54,12 +54,37 @@ INSERT INTO `articles` (`ID`, `titre`, `contenu`, `auteur`, `date`) VALUES
 DROP TABLE IF EXISTS `commentaires`;
 CREATE TABLE IF NOT EXISTS `commentaires` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `auteur` varchar(100) NOT NULL,
+  `auteur_id` int(11) NOT NULL,
   `commentaire` text NOT NULL,
   `date` datetime NOT NULL,
   `article_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `pseudo` varchar(100) NOT NULL DEFAULT 'user',
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `commentaires` text NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`ID`, `pseudo`, `email`, `password`, `commentaires`) VALUES
+(1, 'Pierre', 'pierre@mail.com', '1234', 'ceci n\'est pas un -> Fatal error: Uncaught PDOException: SQLSTATE[23000] ……..'),
+(2, 'jean', 'jean@mail.com', '123', ''),
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
