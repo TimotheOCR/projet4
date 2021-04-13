@@ -14,7 +14,7 @@ class ArticleManager extends Model{
         $q->execute();
     }
     public function updateArticle($id){
-        return $this->uptade('articles', '\Models\Article', $id);
+        return $this->update('articles', '\Models\Article', $id);
     }
 
     public function deleteArticle($id){
