@@ -1,5 +1,6 @@
 <?php 
-    class Utilisateur extends Hydrate{
+    namespace Models;
+    class Utilisateur extends \Hydrate{
         private $_id;
         private $_pseudo;
         private $_email;
