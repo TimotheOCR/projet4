@@ -1,4 +1,8 @@
 <?php 
+    namespace Controllers;
+    use Views\View;
+    use Models\ArticleManager;
+    use Models\CommentaireManager;
     require_once ('views/View.php');
     class ControllerAccueil {
         private $_articleManager;
