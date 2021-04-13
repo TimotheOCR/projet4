@@ -24,7 +24,7 @@
             return self::$_bdd;
         }
         protected function delete($table, $id){
-            $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' WHERE ID = '.$id);
+            $req = $this->getBdd()->prepare('DELETE FROM ' .$table. ' WHERE ID = '.$id);
             $req->execute();
             echo "$id  est supprimé";
             $req->closecursor();
