@@ -6,10 +6,6 @@
         private $_commentaire;
         private $_articleId;
         private $_date;
-        
-        public function hydratation (){
-            Hydrate::__construct();
-        }
 
         public function id() {return $this->_id;}
         public function auteurId() {return $this->_auteurId;}
