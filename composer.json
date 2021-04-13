@@ -1,0 +1,16 @@
+{
+    "name": "timothe/projet4",
+    "authors": [
+        {
+            "name": "timothe",
+            "email": "ti.jeux@laposte.net"
+        }
+    ],
+    "autoload":{
+        "psr-4": {
+            "Models\\" : "models/",
+            "Controllers\\" : "controllers/"
+        }
+    },
+    "require": {}
+}
