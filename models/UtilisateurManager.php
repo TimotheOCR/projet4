@@ -19,10 +19,10 @@ class UtilisateurManager extends Model {
         return $this->delete('utilisateur', $id);
     }
     public function getUtilisateurs (){
-        return $this->getAll('utilisateurs', 'Utilisateur');
+        return $this->getAll('utilisateurs', '\Models\Utilisateur');
     }
     public function getUtilisateur ($id){     
-        return $this->getOne('utilisateur', 'Utilisateur', $id);
+        return $this->getOne('utilisateur', '\Models\Utilisateur', $id);
     }
 
 }
