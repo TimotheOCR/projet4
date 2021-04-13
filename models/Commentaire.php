@@ -1,5 +1,6 @@
 <?php 
-    class Commentaire extends Hydrate{
+ namespace Models;
+    class Commentaire extends \Hydrate{
         private $_id;
         private $_auteurId;
         private $_commentaire;
