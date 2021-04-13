@@ -1,5 +1,6 @@
 <?php 
     namespace Models;
+    use Models\Hydrate;
     class Article extends Hydrate {
         private $_id;
         private $_titre;
