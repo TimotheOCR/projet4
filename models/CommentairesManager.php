@@ -6,7 +6,7 @@ use Models\Commentaire;
 class CommentaireManager extends \Model {
 
     public function add (Commentaire $commentaire){
-        $q = $this->_db->prepare('INSERT INTO commentaires(id, auteur_id, commentaire, date, article_id) VALUE(0, :auteur_id, :commentaire, :date, :article_id)');
+        $q = $this->getBdd()->prepare('INSERT INTO commentaires(id, auteur_id, commentaire, date, article_id) VALUE(0, :auteur_id, :commentaire, :date, :article_id)');
         $q->bindValue(':auteur_id', $commentaire->auteurId(), PDO::PARAM_STR);
         $q->bindValue(':commentaire', $commentaire->commentaire(), PDO::PARAM_STR);
         $q->bindValue(':date', $commentaire->date(), PDO::PARAM_STR);
