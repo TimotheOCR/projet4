@@ -1,4 +1,5 @@
 <?php   
+    namespace Views;
     class View {
         private $_file;
         private $_t;
