@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 25 mars 2021 à 11:54
+-- Généré le :  mer. 10 mars 2021 à 09:08
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 INSERT INTO `articles` (`ID`, `titre`, `contenu`, `auteur_id`, `date`) VALUES
 (1, 'premier article', 'Est es este ', 0, '2021-02-10 11:27:46');
 
+
 -- --------------------------------------------------------
 
 --
@@ -75,16 +76,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `password` varchar(100) NOT NULL,
   `commentaires` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`ID`, `pseudo`, `email`, `password`, `commentaires`) VALUES
-(1, 'Pierre', 'pierre@mail.com', '1234', 'ceci n\'est pas un -> Fatal error: Uncaught PDOException: SQLSTATE[23000] ……..'),
-(2, 'jean', 'jean@mail.com', '123', ''),
-
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
