@@ -1,16 +1,17 @@
 <?php
 namespace Models;
+use PDO;
 use Models\Model;
 use Models\Article;
 
 class ArticleManager extends Model{
 
     public function add (Article $article){
-        $q = $this->getBdd()->prepare('INSERT INTO articles(ID, titre, contenu, auteur_id, date) VALUE(0, :titre, :contenu, :auteur_id, :date)');
+        $q = $this->getBdd()->prepare('INSERT INTO articles(titre, contenu, auteur_id) VALUE(:titre, :contenu, :auteur_id)');  //(ID, titre, contenu, auteur_id, date) VALUE(0, :titre, :contenu, :auteur_id, :date)');
         $q->bindValue(':titre', $article->titre(), PDO::PARAM_STR);
         $q->bindValue(':contenu', $article->contenu(), PDO::PARAM_STR);
         $q->bindValue(':auteur_id', $article->auteur(), PDO::PARAM_STR);
-        $q->bindValue(':date', $article->date(), PDO::PARAM_STR);
+        // $q->bindValue(':date', $article->date(), PDO::PARAM_STR);
         $q->execute();
     }
     public function updateArticle($id){
@@ -28,5 +29,6 @@ class ArticleManager extends Model{
     public function getArticle($id){
         return $this->getOne('articles', '\Models\Article', $id);
     }
+
 }
 ?>

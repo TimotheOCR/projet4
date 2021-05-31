@@ -30,12 +30,13 @@
             $req->closecursor();
         }
         protected function update($table, $obj, $id){
-            $var = [];
+            
             $req = $this->getBdd()->prepare('UPDATE * FROM ' .$table. ' WHERE ID = ' .$id);
             while($data = $req->fetch(PDO::FETCH_ASSOC)){
-                $var[]= new $obj($data);
+                $var= new $obj($data);
+                return $var;
             }
-            return $var;
+            
             $req->closecursor();
         }
         protected function getAll($table, $obj){
@@ -49,11 +50,11 @@
             $req->closecursor();
          }
         protected function getOne($table, $obj, $id){
-            $var = [];
-            $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' WHERE ID = '.$id.' ORDER BY id desc');
+            $var ='';
+            $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' WHERE ID = '.$id.' ORDER BY id desc');            
             $req->execute();
             while($data = $req->fetch(PDO::FETCH_ASSOC)){
-                $var[]= new $obj($data);
+                $var= new $obj($data);
             }
             return $var;
             $req->closecursor();

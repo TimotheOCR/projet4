@@ -1,6 +1,7 @@
 <?php 
     namespace Models;
     use Models\Hydrate;
+
     class Article extends Hydrate {
         private $_id;
         private $_titre;
@@ -19,7 +20,7 @@
             return $this->_id;
         }
         public function setId($id){
-            $this->_id = $id;
+             $this->_id = $id;
         }
 
         public function getTitre(){

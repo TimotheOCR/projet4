@@ -1,5 +1,5 @@
 <?php
-namespace Models;
+    namespace Models;
     class Database {
        CONST DB_HOST ='mysql:host=localhost;dbname=jeanforteroche;charset=utf8';
        CONST DB_USER ='root';
