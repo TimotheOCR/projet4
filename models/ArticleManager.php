@@ -11,13 +11,15 @@ class ArticleManager extends Model{
         $q->bindValue(':titre', $article->titre(), PDO::PARAM_STR);
         $q->bindValue(':contenu', $article->contenu(), PDO::PARAM_STR);
         $q->bindValue(':auteur_id', $article->auteur(), PDO::PARAM_STR);
-        // $q->bindValue(':date', $article->date(), PDO::PARAM_STR);
         $q->execute();
     }
-    public function updateArticle($id){
-        return $this->update('articles', '\Models\Article', $id);
+     public function updateArticle(Article $article){
+     $q = $this->getBdd()->prepare("UPDATE articles SET titre = :titre, contenu = :contenu WHERE ID = :id");
+     $q->bindValue(':titre', $article->titre(), PDO::PARAM_STR);
+     $q->bindValue(':contenu', $article->contenu(), PDO::PARAM_STR);
+     $q->bindValue(':id', $article->id(), PDO::PARAM_INT);
+     $q->execute();
     }
-
     public function deleteArticle($id){
         return $this->delete('articles', $id);
     }
