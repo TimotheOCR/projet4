@@ -24,15 +24,16 @@
                 $this->$methode();     
             }
         }
-        private function update($id){
+         private function getOne($id){
+
             $this->_article = new ArticleManager();
             $article = $this->_article->getArticle($id);
-            $this->_view = new View('Publicate');              
-            $this->_view->generate(array('article' => $article, 'update' => 'true'));
-            echo('methode update');
-            echo ($id);
+            $this->_commentaire = new CommentaireManager();
+            $commentaires = $this->_commentaire->getCommentaires($id);       
+            $this->_view = new View('Article');              
+            $this->_view->generate(array('article' => $article, 'commentaires' => $commentaires));
 
-        }
+        } 
         private function post(){   
             $article = new Article($_POST);  
             $manager = new ArticleManager();        
