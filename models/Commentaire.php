@@ -19,9 +19,9 @@
         public function getId(){
             return $this->_id;
         }
-        // public function setId($id){
-        //     $this->_id = $id;
-        // }
+        public function setId($id){
+            $this->_id = $id;
+        }
 
         public function getAuteurId(){
             return $this->_auteurId;
@@ -47,9 +47,9 @@
         public function getDate(){
             return $this->_date;
         }
-        // public function setDate($date){
-        //     $this->_date = $date;
-        // }    
+        public function setDate($date){
+            $this->_date = $date;
+        }    
     }
 
 
