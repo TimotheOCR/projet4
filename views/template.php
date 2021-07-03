@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,8 +10,17 @@
     <header>
         <h1> Jean Forteroche </h1>
         <p> bienvenue sur mon blog </p>
+        <a href='?url=Accueil'>accueil</a>
+        
+        <a href="?url=Utilisateur/view">connexion</a>
+        <?php if(isset($_SESSION['name'])): ?>
+            <p> vous êtes connecté sous le nom de : <?php echo $_SESSION['name'] ?>
+        <?php endif ?>
+
     </header>
-    <?= $content ?>
+    <body>
+         <?= $content ?>
+    </body>
     <footer>
     
     </footer>
