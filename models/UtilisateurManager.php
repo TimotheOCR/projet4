@@ -12,6 +12,19 @@ class UtilisateurManager extends Model {
         $q->bindValue(':password', $utilisateur->password(), PDO::PARAM_STR);
         $q->execute();
     }
+    public function connexionUtilisateur($pseudo, $password){
+
+        $req = $this->getBdd()->prepare("SELECT password FROM utilisateur WHERE pseudo = '" . $pseudo . "'");            
+        $req->execute(array($pseudo));
+        
+        $user = $req->fetch();
+        $pswverif = password_verify($password, $user['password']);
+        if($pswverif === false){
+            echo ' utilisateur inconnu ';
+        }else{
+            return $pswverif;
+        }
+    }
     public function deleteUtilisateur ($id){
         echo ' je suis deleteUtilisateur() et l\'id ';
         return $this->delete('utilisateur', $id);
