@@ -57,7 +57,7 @@
             $this->_view->generate(array());
         }
         private function logout(){
-            $this->_view = new View('Logout');
-            $this->_view->generate(array());
+            session_start();
+            session_destroy();
         }
     }
