@@ -5,18 +5,17 @@
     use Views\View;
     use Models\ArticleManager;
      require_once ('views/View.php');
-    echo 'controllerAccueil';
 
     class ControllerAccueil {
         private $_articleManager;
         private $_view;
 
-        public function __construct($url){
-            if (isset($url) && count($url) > 1){
-                throw new \Exception('Page introuvable');}
-            else{
+        public function __construct(){
+            // if (isset($url) && count($url) > 1){
+            //     throw new \Exception('Page introuvable');}
+            // else{
                 $this->articles();             
-            }
+            // }
         }
 
         private function articles(){

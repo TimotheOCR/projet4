@@ -26,10 +26,16 @@
         protected function delete($table, $id){
             $req = $this->getBdd()->prepare('DELETE FROM ' .$table. ' WHERE ID = '.$id);
             $req->execute();
-            echo "$id  est supprimé";
             $req->closecursor();
         }
-       
+        // protected function update($table, $fields, $obj){
+        //     foreach ($fields as $key =>$value) {
+        //         $req = $this->getBdd()->prepare(" UPDATE " .$table. " SET " . $key . " = '" .  $value . "' WHERE ID = ". $obj->getId());
+        //         $req->execute();
+        //         $req->closecursor();    
+        //     };
+            
+        // }
         protected function getAll($table, $obj){
             $var = [];
             $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' ORDER BY id desc');
@@ -50,4 +56,4 @@
             return $var;
             $req->closecursor();
         }
-    }
+    } 

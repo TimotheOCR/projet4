@@ -3,7 +3,7 @@ session_start();
 if(isset($update) && $update == true){
   $id = $article->getId();
   $titre = $article->getTitre();
-  $contenu = $article->getContenu();
+  $contenu = strip_tags($article->getContenu());
 }else{
   $id = "";
   $titre = "titre";
@@ -18,11 +18,12 @@ if (isset($_SESSION['name'] )):
       <meta charset="utf-8" />    
       <script src="https://cdn.tiny.cloud/1/7hky4le05syepov3xxz2ccj10q0k7g24f2e94nn7xiq9oilo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   </head>
+  <section id="publicate">
 
       <form id="dataPublicate" method="post" action="/projet4/?url=Article/post/<?= $id ?>">
           <input type="hidden" value ='<?= $id ?>' name="id">
           <input type="text" value="<?php echo $titre;?>" name="titre"> 
-          <textarea  class="tinymce" value="" name="contenu"> <?php echo $contenu;?>     
+          <textarea  class="tinymce" value="" name="contenu"> <?php echo strip_tags($contenu);?>     
           </textarea>
           <input type="hidden" value="1" name="auteur"> 
           <?php if (isset($update) && $update == true): ?>
@@ -43,5 +44,6 @@ if (isset($_SESSION['name'] )):
     </script>
   <?php else : ?>
     <p> vous devez vous connecter pour accéder à cette page</p>
+  </section>
   </html>
   <?php endif ?>

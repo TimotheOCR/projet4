@@ -3,10 +3,8 @@
     namespace Controllers;
     
     use Views\View; 
-    use Models\ArticleManager;
     use Models\UtilisateurManager;
     require_once ('views/View.php');
-    echo 'controllerConnexion ';
 
     class ControllerUtilisateur {
 
@@ -59,5 +57,7 @@
         private function logout(){
             session_start();
             session_destroy();
+            $this->_view = new View('Utilisateur');
+            $this->_view->generate(array());
         }
     }

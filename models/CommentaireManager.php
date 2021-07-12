@@ -13,16 +13,17 @@ class CommentaireManager extends Model {
         $q->bindValue(':articleId', $commentaire->articleId(), PDO::PARAM_INT);
         $q->execute();
     }
-    public function update(Commentaire $commentaire){
-        $q = $this->getBdd()->prepare('UPDATE commentaires SET auteurId = :auteurId, commentaire = :commentaire,  article_id = :articleId WHERE id=":commentaire_id');
-        $q->bindValue(':auteurId', $commentaire->auteurId(), PDO::PARAM_STR);
-        $q->bindValue(':commentaire', $commentaire->commentaire(), PDO::PARAM_STR);
-        $q->bindValue(':articleId', $commentaire->articleId(), PDO::PARAM_INT);
+    public function reportCom($id){
+        $q = $this->getBdd()->prepare("UPDATE commentaires SET signalement = signalement +1 WHERE id=$id");
         $q->execute();
     }
 
     public function deleteCommentaire($id){
         return $this->delete('commentaires', $id);
+    }
+    public function clean ($id){
+        $q = $this->getBdd()->prepare("UPDATE commentaires SET signalement = 0 WHERE id=$id");
+        $q->execute();
     }
 
     public function getCommentaires ($id){     
@@ -34,7 +35,15 @@ class CommentaireManager extends Model {
         }
         return $var; 
     }
-
+    public function getCommentairesMode (){     
+        $var = [];
+        $req = $this->getBdd()->prepare("SELECT * FROM commentaires WHERE signalement ORDER BY signalement desc");
+        $req->execute();
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+            $var[]= new Commentaire($data);
+        }
+        return $var; 
+    }
     public function getOneCom($id){
         return $this->getOne('commentaires', '\Models\Commentaire', $id);
     }

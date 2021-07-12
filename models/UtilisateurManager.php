@@ -2,6 +2,7 @@
 namespace Models;
 use Models\Model;
 use Models\Utilisateur;
+use PDO;
 
 class UtilisateurManager extends Model {
 
@@ -14,10 +15,13 @@ class UtilisateurManager extends Model {
     }
     public function connexionUtilisateur($pseudo, $password){
 
-        $req = $this->getBdd()->prepare("SELECT password FROM utilisateur WHERE pseudo = '" . $pseudo . "'");            
-        $req->execute(array($pseudo));
+        $req = $this->getBdd()->prepare("SELECT password FROM utilisateur WHERE pseudo = :pseudo");            
+        $req->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+        $req->execute();
         
+
         $user = $req->fetch();
+
         $pswverif = password_verify($password, $user['password']);
         if($pswverif === false){
             echo ' utilisateur inconnu ';

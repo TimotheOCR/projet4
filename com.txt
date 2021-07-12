@@ -1,0 +1,103 @@
+https://us04web.zoom.us/j/4407604883?pwd=aVQ5eXcrUXZaaDJsdTQ0eEdWdGtaUT09
+
+[09 fevrier]=========================================================
+
+mvc
+construire modele de donn�es : de quoi vais je avoir besoin pour cr�er mes objets : titres / textes / commentaires( auteur date contenu - non ratach�s � l'article)
+ 
+bdd  article [ titre / contenu / ]
+	commentaire [ utilisateur/ contenu / mod�r� ou non? / � quel article le commentaire est rattach�]
+	
+
+mod�le de donnees 	
+m�thodes : comment acc�der aux donn�es des classes objets
+
+manager : �crire des infos dans la bdd et les manipuler 
+
+
+
+ obj : cr�er classe d'objet articles : 
+github commit - fin de journ�e push 
+16 fevrier 10h 
+
+[16 fevrier]==========================================================
+
+	Cr�er une classe artile : new Article()
+
+ ce que j'ai fait dans le manager, le manager contient le while()
+
+� rechercher : Hydratation
+
+getter / setter
+
+Dans la bdd j'ai cr�� des colonnes, ma classe doit reprendre les colonnes pour chaque m�thodes
+
+pur le 21/02, cr�er les classes pour les 3 tables et cr�ation du manager.
+
+
+[02 mars]==============================================================
+
+il manque le constructeur qui va appeler la méthode hydrate 
+
+essayer de stocker l'hydratation dans une classe
+créer les classes commentaires / utilisateurs et leur managers
+
+[08 mars]==============================================================
+
+	x regarder le cours MVC, faire les controleurs
+
+v. SQLSTATE[23000]: Integrity constraint violation: 1048 "pseudo" ne peut pas être null
+	-> la connection à la bdd n'était pas faite
+v. sqlstate[42000]: syntax error or access violation: 1064 
+	-> il manquait le champ VALUES dans la requete INSERT INTO x(a, b) VALUES (a, b);
+x. recoverable fatal error: Object of class PDO could not be converted to string
+
+x de retour avec l'erreur SQLSTATE[23000], lorsque je crée un nouvel utilisateur, je ne peux pas le manager car l'Utilisateur envoie au Manager
+les données de l'objet Utilisateur (NULL) et les  données du nouvel utilisateur.
+Le Manager recevant des données NULL, me renvoit l'erreur SQLSTATE[23000].
+	->les variables de la classe Utilisateur étaient mal renseignées, il manquait le'_' devant le nom des variables des methodes.
+
+[22 mars]===============================================================
+ mise en place des namespace
+
+[30 mars]===============================================================
+composer.json 
+autoloader en dehors du router
+pousuite namespace 
+
+[06 avril]==============================================================
+soucis namespace Fatal error: Uncaught Error: Class 'Article' not found in C:\wamp64\www\projet4\models\Model.php:46
+poursuite du CRUD
+
+[13 mars]===============================================================
+
+le soucis des namespace est résolu, la classe Model ne trouvait pas les classes qu'appelaient les Managers, 
+	x. 
+    public function getArticles (){
+        return $this->getAll('articles', 'Article'); // getAll( table articles, classe Article)
+    }
+	v. 
+    public function getArticles (){
+        return $this->getAll('articles', '\Models\Article');
+    }
+		-> il fallait préciser le namespace à l'intérieur de la méthode.
+
+[20 mars]===============================================================
+
+[27 mars]===============================================================
+
+soucis controller : ligne 19 router : $controllerClass était Controller".$controller; 
+	-> il fallait rajouter le namespace devant : "Controllers\\Controller".$controller;
+
+L20 router.php  remplacement if(files_exist)
+
+
+
+
+
+
+
+
+
+
+
