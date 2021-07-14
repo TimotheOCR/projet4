@@ -10,7 +10,7 @@ class UtilisateurManager extends Model {
         $q = $this->getBdd()->prepare('INSERT INTO utilisateur(ID, pseudo, email, password) VALUE(0, :pseudo, :email, :password)');
         $q->bindValue(':pseudo', $utilisateur->pseudo(), PDO::PARAM_STR);
         $q->bindValue(':email', $utilisateur->email(), PDO::PARAM_STR);
-        $q->bindValue(':password', $utilisateur->password(), PDO::PARAM_STR);
+        $q->bindValue(':password', password_hash($utilisateur->password(), PASSWORD_DEFAULT), PDO::PARAM_STR);
         $q->execute();
     }
     public function connexionUtilisateur($pseudo, $password){
@@ -23,11 +23,7 @@ class UtilisateurManager extends Model {
         $user = $req->fetch();
 
         $pswverif = password_verify($password, $user['password']);
-        if($pswverif === false){
-            echo ' utilisateur inconnu ';
-        }else{
-            return $pswverif;
-        }
+        return $pswverif;
     }
     public function deleteUtilisateur ($id){
         echo ' je suis deleteUtilisateur() et l\'id ';
@@ -39,6 +35,5 @@ class UtilisateurManager extends Model {
     public function getUtilisateur ($id){     
         return $this->getOne('utilisateur', '\Models\Utilisateur', $id);
     }
-
 }
 ?>

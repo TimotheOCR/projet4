@@ -27,26 +27,27 @@
         }
 
 
-        private function post(){
-            
-            
+        private function post(){      
             if(isset($_POST['pseudo'], $_POST['password']) && !empty($_POST['pseudo'] && !empty( $_POST['password']))){
-                $this->_utilisateurManager = new UtilisateurManager();
-                
+                $this->_utilisateurManager = new UtilisateurManager();        
                 $utilisateur = $this->_utilisateurManager->connexionUtilisateur($_POST['pseudo'], $_POST['password']);
 
                 if($utilisateur == true){
                     $this->_view = new View('Utilisateur');
                     session_start();
                     $_SESSION['name'] = $_POST['pseudo'];
-                 $this->_view->generate(array('name'=> $_SESSION['name']));
-                
+                    $this->_view->generate(array('name'=> $_SESSION['name']));              
+                }else {
+                    echo "utilisateur inconnu";
                 }
-
             }else{
                 die("Le formulaire est incomplet");
             }
             
+        }
+        private function publicate(){
+            $this->_view = new View('Publicate');
+            $this->_view->generate(array());
         }
         
         private function view(){

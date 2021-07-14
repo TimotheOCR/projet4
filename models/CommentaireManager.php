@@ -16,6 +16,7 @@ class CommentaireManager extends Model {
     public function reportCom($id){
         $q = $this->getBdd()->prepare("UPDATE commentaires SET signalement = signalement +1 WHERE id=$id");
         $q->execute();
+        echo '<script>alert("Le commentaire est signalé")</script>';
     }
 
     public function deleteCommentaire($id){

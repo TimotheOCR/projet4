@@ -7,9 +7,10 @@
         use Models\Commentaire;
     require_once ('views/View.php');
 
-        class ControllerCommentaire {
+    class ControllerCommentaire {
         private $_commentaire;
         private $_view;
+        private $_article;
        
         public function __construct($url){
            $this->init($url);
@@ -30,7 +31,14 @@
             if(!empty($_POST)){
                 if(isset($_POST['commentaire'], $_POST['auteurId']) && !empty($_POST['commentaire'] && !empty($_POST['auteurId']))) {
                     $manager->add($commentaire);
-                    echo("Le Commentaire est publié");
+                    echo '<script>alert("Le commentaire est publié")</script>';
+                    $this->_article = new ArticleManager();
+                    $article = $this->_article->getArticle($_POST['articleId']);
+                    $this->_commentaire = new CommentaireManager();
+                    $commentaires = $this->_commentaire->getCommentaires($_POST['articleId']);       
+                    $this->_view = new View('Article');              
+                    $this->_view->generate(array('article' => $article, 'commentaires' => $commentaires));
+
                 }else{
                 die("Le formulaire est incomplet");
                 }
@@ -44,10 +52,30 @@
             ControllerCommentaire::moderation();
         }
         private function report($id){
+            
+            // ob_start();
             $this->_commentaire = new CommentaireManager();
             $commentaire = $this->_commentaire->reportCom($id);
-            // $commentaire->setSignalement(+1);
-            echo ' commentaire signalé ';
+             
+           
+            ob_start();
+            
+
+            echo '<script>alert("Le commentaire est signalé")</script>';
+            ob_end_flush();
+            ob_start();
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            ob_end_flush(); 
+            
+
+
+            // echo '<script>alert("Le commentaire est signalé")</script>';
+            // ob_start();
+            // $this->_commentaire = new CommentaireManager();
+            // $commentaire = $this->_commentaire->reportCom($id);
+             
+            // header('Location: ' . $_SERVER['HTTP_REFERER']);
+            // ob_end_flush(); 
         }
         private function clean($id){
             
@@ -64,13 +92,7 @@
             $this->_view->generate(array('commentaire' => $commentaire));
            
         } 
-        // private function getAll($id){
-        //     $this->_commentaireManager = new CommentaireManager();
-        //     $commentaires = $this->_commentaireManager->getCommentaires($id);
-
-        //     $this->_view = new View('Commentaire');
-        //     $this->_view->generate(array('commentaires' => $commentaires));
-        // }         
+    
         private function moderation(){
             $this->_commentaireManager = new CommentaireManager();
             $commentaires = $this->_commentaireManager->getCommentairesMode();

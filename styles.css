@@ -1,8 +1,4 @@
-body {
-    background-image: url(images/images.jpg);
-}
-
-
+/* header */
 header {
     margin : 0;
     padding : 0;
@@ -10,28 +6,62 @@ header {
     top : 0;
     width: 100%;
     height: 100px;
-    background-color: rgb(240,240,240);
+    background-color: #2e2e35;
+    color:white;
+    border-bottom : solid  #f27900 2px;
+}
+h1 {
+    color : #f27900;
+}
+#m-left p {
+    position : relative;
+    bottom: 20px;
+    left : 25px;
 }
 #m-right {
     width: 50%;
-    float: right;
-    padding-top: 45px;
-    padding-right: 40px;
-    text-align: right;
+    display : inline-grid;
+    text-align: center;
 
 }
+#m-right p {
+    width: 20%;
+    display : inline-grid;
+    text-align: center;
+}
 #m-left {
+    width : 50%;
     float : left;
 
+}
+li {
+    display : inline-grid;
+    width : 20%;
+    text-align: center;
+}
+
+/* body */
+body {
+    background-color: black;
+    margin: 0px;
+    color: white;
+}
+h2 {
+    color :  #f27900;
+}
+hr {
+   color : #f27900;
+   width : 80%;
 }
 :is(section#accueil, section#utilisateur, section#moderation, section#publicate) {
     margin-top : 150px;
     width: 80%;
     margin-right: auto;
     margin-left: auto;
-    background-image: url(images/.jpg);
 }
-
+section#utilisateur{
+    text-align: center;
+}
 .style{
     margin-top: 150px;
     border: 30px solid transparent;
@@ -60,4 +90,56 @@ header {
 }
 #comFormPublier {
     width : 50px;
+}
+div.gestionU {
+    display: inline-grid;
+    width: 35%;
+    text-align: center;
+}
+a {
+    color:white; 
+    text-decoration : none;
+}
+.articleLienA{
+    margin-top: 10px;
+    display: inline-grid;
+}
+.articleLienA :hover {
+    color: #f27900;
+    text-decoration: #f27900;
+    text-decoration-line: underline;
+}
+:is(.articleAcc, .commMod) {
+    margin : 15px;
+    background-color: #2e2e35;
+    padding : 15px;
+}
+.btnMod :hover {
+    
+    border-radius: 90px;
+    background-color: black;
+    color: #f27900;
+    text-decoration: #f27900;
+    text-decoration-line: underline;
+
+}
+.btn{
+    background-color : #f27900;
+    width : 100px;
+    height: 30px;
+    border-radius : 90px;
+    text-align: center;
+}
+li.btnli :hover{
+    color: #f27900;
+    text-decoration: #f27900;
+    text-decoration-line: underline;
+   
+}
+.btnA {
+    padding-top: 5px;
+    color : white;
+}
+.commMod {
+    margin : 15px;
 }

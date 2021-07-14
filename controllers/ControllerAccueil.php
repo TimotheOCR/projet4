@@ -11,11 +11,7 @@
         private $_view;
 
         public function __construct(){
-            // if (isset($url) && count($url) > 1){
-            //     throw new \Exception('Page introuvable');}
-            // else{
-                $this->articles();             
-            // }
+            $this->articles();             
         }
 
         private function articles(){

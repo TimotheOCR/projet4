@@ -28,14 +28,6 @@
             $req->execute();
             $req->closecursor();
         }
-        // protected function update($table, $fields, $obj){
-        //     foreach ($fields as $key =>$value) {
-        //         $req = $this->getBdd()->prepare(" UPDATE " .$table. " SET " . $key . " = '" .  $value . "' WHERE ID = ". $obj->getId());
-        //         $req->execute();
-        //         $req->closecursor();    
-        //     };
-            
-        // }
         protected function getAll($table, $obj){
             $var = [];
             $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' ORDER BY id desc');

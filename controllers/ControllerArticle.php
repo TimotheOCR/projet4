@@ -44,6 +44,8 @@
                     if(isset($_POST['titre'], $_POST['contenu'], $_POST['auteur']) && !empty($_POST['titre'] && !empty($_POST['contenu'] && !empty($_POST['auteur'])))) {
                         $manager->add($article);
                         echo("L'article est publié");
+                        $this->_view = new View('Utilisateur');
+                        $this->_view->generate(array());
                     }else{
                     die("Le formulaire est incomplet");
                     }
