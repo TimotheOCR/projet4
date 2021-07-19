@@ -61,4 +61,8 @@
             $this->_view = new View('Utilisateur');
             $this->_view->generate(array());
         }
+        private function mentions(){
+            $this->_view = new View('Mentions');
+            $this->_view->generate(array());
+        }
     }

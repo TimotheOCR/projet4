@@ -53,29 +53,11 @@
         }
         private function report($id){
             
-            // ob_start();
             $this->_commentaire = new CommentaireManager();
-            $commentaire = $this->_commentaire->reportCom($id);
-             
-           
-            ob_start();
-            
+            $commentaire = $this->_commentaire->reportCom($id); 
+            $this->_view = new View('Reload');
+            $this->_view->generate(array());
 
-            echo '<script>alert("Le commentaire est signalé")</script>';
-            ob_end_flush();
-            ob_start();
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-            ob_end_flush(); 
-            
-
-
-            // echo '<script>alert("Le commentaire est signalé")</script>';
-            // ob_start();
-            // $this->_commentaire = new CommentaireManager();
-            // $commentaire = $this->_commentaire->reportCom($id);
-             
-            // header('Location: ' . $_SERVER['HTTP_REFERER']);
-            // ob_end_flush(); 
         }
         private function clean($id){
             

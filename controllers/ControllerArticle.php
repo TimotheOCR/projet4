@@ -78,7 +78,7 @@
 
             $this->_view = new View('Accueil');
             $this->_view->generate(array('articles' => $articles));
-        }         
+        }        
   
     }
      

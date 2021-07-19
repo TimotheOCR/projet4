@@ -53,7 +53,7 @@ hr {
    color : #f27900;
    width : 80%;
 }
-:is(section#accueil, section#utilisateur, section#moderation, section#publicate) {
+:is(section#accueil, section#utilisateur, section#moderation, section#publicate, section#page, section#reload, section#mentions, section#publicate ){
     margin-top : 150px;
     width: 80%;
     margin-right: auto;
@@ -62,18 +62,9 @@ hr {
 section#utilisateur{
     text-align: center;
 }
-.style{
-    margin-top: 150px;
-    border: 30px solid transparent;
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
-    border-image: url(images/boucle2.png) 0 0 0 25;
-    border-left-width: 20px;
-    border-image-repeat: repeat;
-    background-image: url(images/articlefond.jpg);
-}
- :is(.pAcc) {
+
+
+.pAcc {
     overflow-y: hidden;
     height: 50px;
 }
@@ -109,10 +100,17 @@ a {
     text-decoration: #f27900;
     text-decoration-line: underline;
 }
-:is(.articleAcc, .commMod) {
+:is(.articleAcc, .commMod, section#article, div.commArticle, div.reload , section#mentions, section#SecComForm) {
     margin : 15px;
     background-color: #2e2e35;
     padding : 15px;
+}
+section#mentions {
+    margin : auto;
+}
+section#publicate {
+    padding:15px;
+    background-color: #2e2e35;
 }
 .btnMod :hover {
     
@@ -121,7 +119,7 @@ a {
     color: #f27900;
     text-decoration: #f27900;
     text-decoration-line: underline;
-
+   
 }
 .btn{
     background-color : #f27900;
@@ -136,10 +134,57 @@ li.btnli :hover{
     text-decoration-line: underline;
    
 }
+.report {
+    display : grid;
+    width : 200px;
+}
 .btnA {
     padding-top: 5px;
     color : white;
 }
 .commMod {
     margin : 15px;
+}
+#footer{
+ 
+    clear: both;
+    position: absolute;
+    height: 2.5em;
+    margin-top: -2.5em;
+    bottom: 0;
+}
+#page-container{
+    min-height: 100vh;
+    position:relative;
+}
+section{
+    padding-bottom: 2.5em;
+}   
+#up{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #f27900;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.fa-arrow-up {
+    position: relative;
+    bottom: -6px;
+    right: -8px;
+}
+@media screen and (max-width: 740px) {
+    
+     header li{
+         
+         width : 100%;
+         padding : 5px;
+     }
+     header p {
+         display: none;
+     }
+     #m-right p {
+        display: none;
+     }
 }

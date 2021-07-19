@@ -4,9 +4,10 @@
     use Models\Utilisateur;
     abstract class Model{
         private static $_bdd;
-        CONST DB_HOST ='mysql:host=localhost;dbname=jeanforteroche;charset=utf8';
-        CONST DB_USER ='root';
-        CONST DB_PASS ='';
+        CONST DB_HOST ='mysql:dbname=dbs2868676;host=db5003527447.hosting-data.io;charset=utf8';
+
+        CONST DB_USER ='dbu2729608';
+        CONST DB_PASS ='x7eT59dK';
 
         private static function setBdd(){
             try {
@@ -28,6 +29,14 @@
             $req->execute();
             $req->closecursor();
         }
+        // protected function update($table, $fields, $obj){
+        //     foreach ($fields as $key =>$value) {
+        //         $req = $this->getBdd()->prepare(" UPDATE " .$table. " SET " . $key . " = '" .  $value . "' WHERE ID = ". $obj->getId());
+        //         $req->execute();
+        //         $req->closecursor();    
+        //     };
+            
+        // }
         protected function getAll($table, $obj){
             $var = [];
             $req = $this->getBdd()->prepare('SELECT * FROM ' .$table. ' ORDER BY id desc');
