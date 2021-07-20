@@ -3,7 +3,7 @@ session_start();
 if(isset($update) && $update == true){
   $id = $article->getId();
   $titre = $article->getTitre();
-  $contenu = strip_tags($article->getContenu());
+  $contenu = $article->getContenu();
 }else{
   $id = "";
   $titre = "titre";
@@ -15,7 +15,7 @@ if (isset($_SESSION['name'] )):
   <form id="dataPublicate" method="post" action="/projet4/?url=Article/post/<?= $id ?>">
     <input type="hidden" value ='<?= $id ?>' name="id">
     <input type="text" value="<?php echo $titre;?>" name="titre"> 
-    <textarea  class="tinymce" value="" name="contenu"> <?php echo strip_tags($contenu);?>     
+    <textarea  class="tinymce" value="" name="contenu"> <?php echo htmlentities($contenu);?>     
     </textarea>
     <input type="hidden" value="1" name="auteur"> 
     <?php if (isset($update) && $update == true): ?>
