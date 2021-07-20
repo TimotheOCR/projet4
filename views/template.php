@@ -39,11 +39,11 @@
 
         </header>
         
-            <?= $content ?>
-            <footer id="footer">
-                <a href="?url=Utilisateur/mentions">mentions légales</a>
-                <a id="up" href="#"><i class="fas fa-arrow-up"></i></a>     
-            </footer>
+        <?= $content ?>
+        <footer id="footer">
+            <a href="?url=Utilisateur/mentions">mentions légales</a>
+            <a id="up" href="#"><i class="fas fa-arrow-up"></i></a>     
+        </footer>
         </div>
     </body>
 </html>
