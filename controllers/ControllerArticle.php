@@ -56,7 +56,8 @@
         private function delete($id){
             $this->_article = new ArticleManager();
             $article = $this->_article->deleteArticle($id);
-            echo '<script>alert("article supprimé")</script>';
+            $this->_commentaire = new CommentaireManager();
+            $commentaire = $this->_commentaire->deleteAllCom($id);
             $this->_view = new View('Utilisateur');
             $this->_view->generate(array());
             
