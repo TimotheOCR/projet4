@@ -10,7 +10,7 @@
         public function generate($data){ 
             $content = $this->generateFile($this->_file, $data);
 
-            $view = $this->generateFile('views/template.php', array('t' => $this->_t, 'content' => $content));
+            $view = $this->generateFile('views/template.php', array('content' => $content));
             echo $view;
         }
 
