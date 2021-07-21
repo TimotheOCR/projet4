@@ -38,7 +38,8 @@
                     $_SESSION['name'] = $_POST['pseudo'];
                     $this->_view->generate(array('name'=> $_SESSION['name']));              
                 }else {
-                    echo "utilisateur inconnu";
+                     $this->_view = new View('Reload');
+                    $this->_view->generate(array('wrong' => 'true'));  
                 }
             }else{
                 die("Le formulaire est incomplet");
