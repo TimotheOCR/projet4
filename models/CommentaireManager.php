@@ -21,6 +21,11 @@ class CommentaireManager extends Model {
     public function deleteCommentaire($id){
         return $this->delete('commentaires', $id);
     }
+     public function deleteAllCom ($id){     
+        $req = $this->getBdd()->prepare("DELETE FROM commentaires WHERE articleId=$id");
+        $req->execute();
+      
+    }
     public function clean ($id){
         $q = $this->getBdd()->prepare("UPDATE commentaires SET signalement = 0 WHERE id=$id");
         $q->execute();
